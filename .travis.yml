@@ -1,0 +1,12 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - "11"
+matrix:
+  fast_finish: true
+install:
+    - npm install -g brunch
+    - npm install
+script:
+    - npm run-script build
