@@ -1,20 +1,22 @@
-.noodles {
-  font-family: -apple-system, Sans-Serif;
+.bowl {
+  height: 200px;
+  line-height: 200px;
   text-align: center;
+}
+.noodles {
+  font-family: 'Inconsolata', monospace;
+  text-align: center;
+  height: 100%;
   font-size: 24pt;
-  color: #3f894a;
+  color: #ffffff;
+  text-shadow: 2px 2px 2px #000000;
 }
 
-a {
-  color: #3f894a;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0);
-}
-
-a:hover {
-  color: #27552e;
-}
-
-h5 > a {
-  text-decoration: underline;
+html {
+  height: 100%;
+  background: url("img/bg.gif") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
