@@ -1,15 +1,30 @@
 sudo: required
 dist: trusty
 language: node_js
+
 node_js:
 - '11'
+
 matrix:
   fast_finish: true
+
 install:
 - npm install -g brunch
 - npm install
+
 script:
 - npm run-script build
-before_install:
+
+before_deploy:
 - openssl aes-256-cbc -K $encrypted_c58dbf093b18_key -iv $encrypted_c58dbf093b18_iv
   -in deploy.pem.enc -out deploy.pem -d
+- eval "$(ssh-agent -s)"
+- chmod 600 deploy.pem
+- ssh-add deploy.pem
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: rsync -r --delete-after --quit $TRAVIS_BUILD_DIR/public ubuntu@noodles.moe:/var/www/html
+  on:
+    branch: master
